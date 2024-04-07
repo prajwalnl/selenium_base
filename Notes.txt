@@ -1,0 +1,130 @@
+Selenium:
+
+quit()   close entire browser
+close()   close single tab/current tab    Openn tab using javascript executor and switch using handles
+
+
+WebDriver methods:
+	close()
+	findElement()
+	findElements()
+	get(String)
+	getCurrentUrl()
+	getPageSource()
+	getTitle()
+	getWindowsHandle()
+	getWindowsHandles()
+	manage()
+	navigate()
+	quit()
+	switchTo()
+
+
+Locators
+	tagName()
+	id()
+	name()
+	className()
+	linkText()
+	partialLinktext()
+	cssSelector()
+	xPath()
+
+
+xPath:
+
+Abosulute xpath: '/' : parent to immediate child
+Relative xpath:  '//': parent to any child
+
+### Syntax:  //tag[@AN='AV']        Attribute Name and Value
+
+	i) //tag[@AN='AV' and @AN='AV']    Pipeline to combine multiple attributes.
+   ii) //tag[text()='text value']  		text()==.
+
+
+## Partially dynamic elements
+	//tag[contains(text(),'text')]
+
+## Completley dynamic elements
+	Forward traversing:		Parent --> Child
+	Backward traversing:    Child --> Immediate parent   "/.."
+
+	Sibling function:       One child --> Another child
+		Following sibling:		//a[.='Advertising']/following::a[1]
+		Preceeding sibling:		//a[.='Advertising']/preceding::a[1]
+		ancestor function:      //a[.='Advertising']/ancestor::div[1]
+
+
+By group index:
+(//input[@value='textbox'])[1]
+
+
+WebElement functions:
+clear()
+click()
+findElement()
+findElements()
+getTagName()
+getText()
+isDisplayed()
+isEnabled()
+isSelected()
+sendKeys(---)
+submit()
+getScreenShotAs()
+
+
+element.sendKeys(Keys.CONTROL+"a");
+
+
+Dropdowns:
+	single select dropdown		- select
+	multi select dropdown		- select and deselect
+
+	handle dropdown using select class
+		Select s = new Select(webElement);
+
+		methods:
+		selectByIndex(int index)
+		selectByValue(String value)
+		selectByVisibleText(String value)
+		deselectAll()
+		deselectByIndex(int index)
+		deselectByValue(String value)
+		deselectByVisibleText(String value)
+		getAllSelectedOptions() --> List<WebElement>
+		getFirstSelectedOption() --> WebElement
+		getOptions()  --> List<WebElement>
+		getWrappedElement() --> WebElement
+		isMultiple() --> boolean
+
+
+Mouse hover actions:
+	Use Action class
+
+	Actions act = new Actions(driver);
+
+	Hover:        act.moveToElement().perfrom()
+	Drag & drop:  act.dragAndDrop(ele1,ele2).perform()
+	Double click: act.doubleClick(doubleClick).perform();
+	Right click:  act.contextClick(rightClick).perform();
+
+
+
+
+Robot class == right click == action class
+
+Handle popups
+	Hidden division popup			-    findElement()
+	Alert and confirmation popup	-    driver.switchTo().alert();  admit();  dismiss();
+	File download popup				-    Robot class
+	File upload popup				-    sendKeys(path to file)
+	Child browser popup				-    getWindowHandle(); / getWindowHandles();
+										 divison.switchTo().window(id of browser)
+
+
+
+
+TestNG:
+
+BeforeSuite, beforeTest, Test1, AfterMethod, Test2, AfterMethod, AfterTest, AfterSuite
